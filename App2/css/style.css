@@ -1,0 +1,37 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Box Model Hack */
+*{
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+/* img{
+  display: block; 
+  margin: 0 auto;
+} */
+
+section{
+  /* border: 1px dashed blue; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: auto;
+}
+
+div{
+  border: 1px solid black;
+  margin: 0 auto;
+  /* width: 150px;
+  height: 150px; */
+}
+
+button{
+  margin: 20px;
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
