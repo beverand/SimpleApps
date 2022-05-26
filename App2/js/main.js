@@ -38,9 +38,12 @@ function getFetch(){
 
 
 function cardImage(nameStr){
-  if(nameStr == 'Fortitude'){
-    nameStr = 'Justice'
-  }
+    if(nameStr == 'Fortitude'){
+      nameStr = 'Strength'
+    }
+    if(nameStr == 'The Last Judgment'){
+      nameStr = 'Judgement'
+    } 
     
   return nameStr.toLowerCase().split(' ').join('-') + '.jpg'
 }
