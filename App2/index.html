@@ -2,8 +2,8 @@
 <html lang="en">
 	<head>
     	<meta charset="utf-8">
-    	<meta name="description" content="This is where your description goes">
-    	<meta name="keywords" content="one, two, three">
+    	<meta name="description" content="Tarot on the Go, get your reading now.">
+    	<meta name="keywords" content="tarot, basic three card reading, horseshoe reading, celtic cross reading, pentagram, romany">
 
 		<title>Tarot on the Go</title>
 
@@ -12,22 +12,36 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-
-		<h1>Past Present Future</h1>
-		<p>
-			Click button to pick three cards
-		</p>
 		<!-- <input type="text" name="" value=""> -->
-		<button type="button" name="button">Get Reading</button>
-		
-		<section class="puppypics">
-			<div><img src="" alt='pastcard' class="past"></div>
-			<div><img src="" alt='presentcard' class="present"></div>
-			<div><img src="" alt='futurecard' class="future"></div>
-		</section>
+		<div id="ball">
+	    <img src="img/free-clip-art-fortune-teller-4.png" alt="fortuneteller" id="fortuneteller"> 
+		<img src="img/block_m8_32ins1024.jpg" alt="stars" class="spin" id="stars">
+		</div>
+		<br>
+			<p>
+				Click button to pick three cards
+			</p>		
+		<section>
+			<form name="readtype"> 
+				<select name="readings" size="1" class="readings"> 
+				<option value="5">Pentagram</option> 
+				<option selected value="3">Basic</option> 
+				<option value="7">Horseshoe</option> 
+				<option value="21">Romany</option> 
+				<option value="10">Celtic Cross</option> 
+				</select> 
+				<input type="button" value="Get Reading" id="button"> 
+			</form> 
+			<!-- <h1>Past Present Future</h1> -->
+
+	    </section>
 		<h2>Here is your reading:</h2>
-		<img src="" alt="">
-		<h3>Instructions</h3>
+		<section class="cards" id="cards">
+			<!-- <div><img src="" alt='pastcard' class="past"></div>
+			<div><img src="" alt='presentcard' class="present"></div>
+			<div><img src="" alt='futurecard' class="future"></div> -->
+		</section>
+		<h3></h3>
 
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>

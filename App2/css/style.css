@@ -10,24 +10,24 @@
 /******************************************
 /* LAYOUT
 /*******************************************/
-/* img{
-  display: block; 
-  margin: 0 auto;
-} */
-
-section{
-  /* border: 1px dashed blue; */
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
-  grid-template-rows: auto;
+#ball{
+  position: relative;
+  display: block;
 }
 
-div{
+.cards{
+  /* border: 1px dashed blue; */
+   display: inline-block/*grid; */
+  /* grid-template-columns: 30% 30% 30%;
+  grid-template-rows: auto; */
+}
+
+/*div{
   border: 1px solid black;
   margin: 0 auto;
-  /* width: 150px;
-  height: 150px; */
-}
+   width: 150px;
+  height: 150px; 
+}*/
 
 button{
   margin: 20px;
@@ -35,3 +35,36 @@ button{
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+#fortuneteller{
+  position: absolute; 
+  /* top: 15%; */
+  /* left: 25px; */
+  z-index: 3;
+  width: 100%;
+}
+
+#stars{
+  padding-top: 18%; 
+  position:relative;
+  top: 60%;
+  left: 30%; 
+  z-index: 1;
+  width: 50%;
+}
+
+@keyframes spinning {
+   20% { transform: rotate(15deg); } 
+   40% { transform: rotate(-10deg); } 
+   60% { transform: rotate(5deg); } 
+   80% { transform: rotate(-5deg); } 
+   100% { transform: rotate(0deg); } 
+}
+.spin {
+  animation-name: spinning;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  /* linear | ease | ease-in | ease-out | ease-in-out */
+  animation-timing-function: linear;
+  /* transform-origin: center; */
+}
