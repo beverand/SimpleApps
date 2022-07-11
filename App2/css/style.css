@@ -17,6 +17,7 @@
 
 .cards{
   /* border: 1px dashed blue; */
+  clear: both;
    display: inline-block/*grid; */
   /* grid-template-columns: 30% 30% 30%;
   grid-template-rows: auto; */
@@ -67,4 +68,11 @@ button{
   /* linear | ease | ease-in | ease-out | ease-in-out */
   animation-timing-function: linear;
   /* transform-origin: center; */
+}
+
+@media screen and (max-width: 258px) {
+  .cards > img{
+    width: 80%
+  }
+  
 }

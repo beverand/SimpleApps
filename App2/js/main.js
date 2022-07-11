@@ -11,8 +11,13 @@ class Tarot{
     this.cardLoc = !cardImages? 'https://www.free-tarot-reading.net/img/cards/rider-waite/': cardImages
     this.rev = Array.from({length: this.cardCount}, () => Math.floor(Math.random() * 2));
     this.reading = this.setCards(cardArray)
+    console.log(this.reading)
     console.log(`card count is ${this.cardCount}`)
     this.showTarot(this.reading)
+    let tarotTable = document.getElementById('cards')
+    var image = document.createElement('img');//new Image();
+    image.src = this.cardLoc + 'judgement.jpg';
+    tarotTable.appendChild(image); 
   }
 
   getRev(){
@@ -22,29 +27,6 @@ class Tarot{
   getCardArray(){
     //console.log(this.cards, this.meaning)
     return this.reading
-  }
-
-  setCards(cardArray){
-    let n = Array(this.cardCount)
-    fetch(cardArray)
-        .then(res => res.json()) // parse response as JSON
-        .then(data => {
-            for(let i = 0; i < data.cards.length; i++){
-              n[i] =  
-                {card: data.cards[i].name,
-                meaning: this.rev[i] == 1? data.cards[i].meaning_rev: data.cards[i].meaning_up,
-                rev: this.rev[i],
-                img: this.cardImage(data.cards[i].name)
-                };
-              };
-           return n
-          })
-        .catch(err => {
-            console.log(`error ${err}`)
-        });
-    console.log('n is: ')
-    console.log(n)
- 
   }
 
   cardImage(nameStr){
@@ -57,11 +39,43 @@ class Tarot{
     return nameStr.toLowerCase().split(' ').join('-') + '.jpg'
   }
 
+  async setCards(cardArray){
+    let n = Array(this.cardCount)
+    const cards = await fetch(cardArray)
+    const data = await cards.json() // parse response as JSON
+    for(let i = 0; i < data.cards.length; i++){
+      n[i] =  
+        {card: data.cards[i].name,
+        meaning: this.rev[i] == 1? data.cards[i].meaning_rev: data.cards[i].meaning_up,
+        rev: this.rev[i],
+        img: this.cardImage(data.cards[i].name)
+        };
+      };
+    console.log('n is: ')
+    console.log(n)
+    return n.result
+  }
+
+
   showTarot(r){
     let tarotTable = document.getElementById('cards')//document.querySelector('.cards')
+    console.log('Is Array?')
     console.log(Array.isArray(r))
+    //console.log(r)
     //console.log(`r len is ${r.length}`);
-    console.log(this.getCardArray())
+    //console.log(this.getCardArray())
+    // r.forEach((n,i) =>{
+    //     var image = new Image();
+    //     image.src = cardLoc + cardImage(n.name);
+    //     document.querySelector('.cards').appendChild(image); 
+    //     console.log(n)
+    //     if(n[i].rev == 1){
+    //       document.querySelector('.cards').appendChild(image).style.transform = "rotate(180deg)";
+    //     }
+    //     document.querySelector('h3').innerText += `Card ${i}:  ${n.card}  ${n.rev==1?' - Reversed ': ''}\n 
+    //     ${n.meaning} \n\n`
+    //   }
+    //)
     // for(n of r){
     //   console.log(r[n])
     // };
@@ -88,7 +102,7 @@ class Tarot{
 
  function getFetch(){
     let reading = new Tarot(document.querySelector(".readings").value)
-    
+    reading.getCardArray()
  }
 //   // const choice = document.querySelector('input').value
 //   const cardArray = 'https://rws-cards-api.herokuapp.com/api/v1/cards/random?n=3'
